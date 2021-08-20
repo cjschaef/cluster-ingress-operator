@@ -42,6 +42,8 @@ func NewProvider(config Config) (*Provider, error) {
 	}
 	provider := &Provider{}
 
+	provider.dnsServices = make(map[string]dnsclient.DnsClient)
+
 	for _, zone := range config.Zones {
 		options := &dnsrecordsv1.DnsRecordsV1Options{
 			Authenticator:  authenticator,
