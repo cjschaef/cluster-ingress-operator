@@ -161,7 +161,7 @@ func (p *Provider) createOrUpdateDNSRecord(record *iov1.DNSRecord, zone configv1
 			createOpt.SetName(record.Spec.DNSName)
 			createOpt.SetType(string(record.Spec.RecordType))
 			createOpt.SetContent(target)
-			createOpt.SetTTL(record.Spec.RecordTTL)
+			createOpt.SetTTL(int64(1))
 			_, _, err := dnsService.CreateDnsRecord(createOpt)
 			if err != nil {
 				return fmt.Errorf("createOrUpdateDNSRecord: failed to create the dns record: %w", err)
